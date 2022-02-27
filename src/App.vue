@@ -34,5 +34,5 @@
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
-/* @import "../node_modules/animate.css/animate.min.css"; */
+ @import "../node_modules/animate.css/animate.min.css";
 </style>

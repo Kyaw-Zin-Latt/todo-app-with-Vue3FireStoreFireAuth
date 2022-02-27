@@ -4,7 +4,6 @@
         <div class="mb-2">
             <input type="text" class="form-control rounded-pill" placeholder="&#128269; Type Something">
         </div>
-
         <clip-loader :loading="loading" color="#0d6efd" class="text-center position-absolute loading-place" size="50px"></clip-loader>
 
         <div v-for="todo in todos" :key="todo.id" class="card p-0 mb-2">
@@ -13,8 +12,9 @@
                     <div class="">
                         <h6 class="">{{ todo.task }}</h6>
                         <div class="">
-                            <i class="bi-calendar-date text-primary me-2"></i>
-                            <small class="mb-0 text-secondary">{{ Date(todo.createdAt).toString().substring(4, 15) }}</small>
+                            <i class="bi-clock text-primary me-2"></i>
+                            <Timeago :datetime="todo.createdAt" long/>
+<!--                            <small class="mb-0 text-secondary">{{ Date(todo.createdAt).toString().substring(4, 15) }}</small>-->
                         </div>
                     </div>
                     <div class="">
@@ -22,6 +22,7 @@
                         <i @click="handleDelete(todo.id)" class="bi-trash mx-2 text-danger"></i>
                         <i class="bi-star-fill" v-if="todo.completed"></i>
                         <i class="bi-star" v-else></i>
+
                     </div>
                 </div>
             </div>
@@ -34,9 +35,11 @@
     import db from "../../firebase/init";
     import {ref} from "vue";
     import ClipLoader from "vue-spinner/src/ClipLoader";
+    import { Timeago } from 'vue2-timeago'
+
 
     export default {
-        components: {ClipLoader},
+        components: {ClipLoader, Timeago},
         name : "List",
         setup() {
             const todos = ref([]);
