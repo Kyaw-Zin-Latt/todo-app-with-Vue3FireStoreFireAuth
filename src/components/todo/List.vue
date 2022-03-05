@@ -1,8 +1,13 @@
 <template>
     <div class="col-12 mt-2">
 
-        <div class="mb-2">
+        <div class="mb-2 d-flex align-items-center">
             <input type="text" v-model="searchKey" class="form-control rounded-pill" placeholder="&#128269; Type Something">
+            <router-link to="/login">
+                <button @click="handleLogout" class="btn btn-outline-danger ms-2">
+                    <i class="bi-box-arrow-right text-danger rounded-pill"></i>
+                </button>
+            </router-link>
         </div>
         <clip-loader :loading="loading" color="#0d6efd" class="text-center position-absolute loading-place" size="50px"></clip-loader>
         <div class="card p-0 p-1" :class="{'d-none' : showNoData}">
@@ -70,6 +75,9 @@
             // })
 
 
+            const handleLogout = () => {
+                localStorage.setItem("auth","false");
+            }
 
             collectionRef.onSnapshot((snapshot) => {
                     let result = [];
@@ -120,7 +128,7 @@
 
             })
 
-            return { loading, handleDelete, handleFavourite, searchedProducts, searchKey, showNoData}
+            return { loading, handleDelete, handleFavourite, searchedProducts, searchKey, showNoData, handleLogout}
         }
     }
 </script>
