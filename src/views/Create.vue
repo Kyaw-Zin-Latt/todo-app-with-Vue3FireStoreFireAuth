@@ -27,7 +27,7 @@
 
 <script>
     import {reactive, toRefs} from "@vue/reactivity";
-    import db from "../firebase/init";
+    import {db} from "../firebase/init";
     import {useRouter} from "vue-router";
 
     export default {
